@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LayoutContainer from "@/components/LayoutContainer";
+import { cn } from "@/lib/Utils";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "min-h-screen w-full bg-white dark:bg-slate-900 dark:text-white text-slate-800 opacity-85",
+          inter.className
+        )}
+      >
         <LayoutContainer>
           <NavBar />
           {children}

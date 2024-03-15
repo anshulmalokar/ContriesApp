@@ -2,6 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 
 // Made the NavBar Sticky
 
@@ -20,15 +22,36 @@ export default function NavBar({}: Props) {
 
   return (
     <>
-      <main className="sticky top-0 shadow-xl dark:shadow-xl z-50 border-b-2">
-        <div className="flex justify-between p-3 items-center max-w-screen-2xl mx-auto">
-          <Link href={"/"} className="text-black text-xl md:text-2xl">
+      <main className="sticky top-0 shadow-xl dark:shadow-2xl    z-50 dark:bg-slate-800">
+        <div className="flex justify-between p-3 items-center max-w-screen-2xl mx-auto transition-all">
+          <Link href={"/"} className="text-xl md:text-2xl">
             Where in the world
           </Link>
-          <div className="flex">
-            <div>Logo</div>
-            <div onClick={toggleTheme}>Toggle button</div>
-          </div>
+          <section
+            className="flex items-center gap-2 hover:cursor-pointer"
+            onClick={toggleTheme}
+          >
+            <div>
+              {resolvedTheme === "dark" ? (
+                <>
+                  <MdOutlineLightMode size={30} />
+                </>
+              ) : (
+                <>
+                  <MdLightMode size={30} />
+                </>
+              )}
+            </div>
+            <div className="text-xl hidden md:block">
+              {resolvedTheme === "dark" ? (
+                <span>Light Mode</span>
+              ) : (
+                <>
+                  <span>Dark Mode</span>
+                </>
+              )}
+            </div>
+          </section>
         </div>
       </main>
     </>
