@@ -9,9 +9,6 @@ export default function Home() {
   const { isLoading, error, data } = useQuery<CountryProp[]>("countries", () =>
     fetchCountries()
   );
-
-  console.log(data);
-
   if (isLoading) {
     return <>loading...</>;
   }
@@ -21,7 +18,13 @@ export default function Home() {
         {data?.map((val) => {
           return (
             <>
-              <CountryCard flags={val.flags} />
+              <CountryCard
+                flags={val.flags}
+                population={val.population}
+                region={val.region}
+                capital={val.capital}
+                name={val.name}
+              />
             </>
           );
         })}

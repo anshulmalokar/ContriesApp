@@ -33,7 +33,7 @@ interface CoatOfArms {
 }
 
 export interface CountryProp {
-  name?: Name;
+  name: Name;
   tld?: string[]; // Property for top-level domain
   topLevelDomain?: string[];
   population?: number;
@@ -57,14 +57,23 @@ export default function CountryCard(props: CountryProp) {
   return (
     <Link
       href={`/`}
-      className="w-[300px] h-[300px] mt-10 rounded-lg border-opacity-100 border-2 shadow-xl"
+      className="w-[500px] h-fit sm:w-[400px] ] md:w-[300px] mt-10 rounded-lg border-opacity-100 border-2 shadow-xl dark:border-slate-600 overflow-hidden cursor-pointer"
     >
       <ImageComponent src={props?.flags.svg} />
-      <div className="flex  flex-col items-center">
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
-        <div>Hello</div>
+      <div className="text-2xl font-bold mt-1 ml-2">{props.name?.common}</div>
+      <div className="flex flex-col mt-5 ml-10 font-bold text-3lx gap-4 md:gap-2">
+        <div>
+          Population <span className="text-slate-100">:</span>{" "}
+          <span>{props.population}</span>
+        </div>
+        <div>
+          Region <span className="text-slate-100">:</span>{" "}
+          <span>{props.region}</span>
+        </div>
+        <div>
+          Capital <span className="text-slate-100">:</span>{" "}
+          <span>{props.capital}</span>
+        </div>
       </div>
     </Link>
   );
@@ -72,14 +81,14 @@ export default function CountryCard(props: CountryProp) {
 
 function ImageComponent({ src }: { src: string }) {
   return (
-    <>
+    <div className="relative">
       <Image
-        className="border-collapse p-3 lg:text-xl md:text-2xl sm:text-3xl text-4xl w-full h-[180px]"
+        className="lg:text-xl md:text-2xl sm:text-3xl text-4xl p-2 w-full h-[180px] transition-transform duration-300 transform hover:scale-110"
         src={src}
         alt="default-Image"
         width={0}
         height={0}
       />
-    </>
+    </div>
   );
 }
