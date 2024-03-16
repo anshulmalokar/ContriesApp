@@ -1,4 +1,3 @@
-/** @format */
 "use client";
 
 import { ThemeProvider } from "next-themes";
@@ -12,8 +11,8 @@ type Props = {
 const queryClient = new QueryClient();
 export default function LayoutContainer({ children }: Props) {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class">{children}</ThemeProvider>
-    </>
+    </QueryClientProvider>
   );
 }

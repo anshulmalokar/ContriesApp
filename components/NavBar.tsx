@@ -22,7 +22,7 @@ export default function NavBar({}: Props) {
 
   return (
     <>
-      <main className="sticky top-0 shadow-xl dark:shadow-2xl    z-50 dark:bg-slate-800">
+      <main className="sticky top-0 shadow-xl dark:shadow-2xl bg-inherit z-50 dark:bg-slate-800">
         <div className="flex justify-between p-3 items-center max-w-screen-2xl mx-auto transition-all">
           <Link href={"/"} className="text-xl md:text-2xl">
             Where in the world
